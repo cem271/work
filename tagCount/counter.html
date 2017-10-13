@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Count the words</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="counter.js"></script>
+
+</head>
+<body>
+  <input placeholder="Paste metadata here." type="text" id="metadata"></input>
+  <button onclick="count();" id="submit">Submit.</button>
+  <p>The metadata is <strong id="mdLength">this many</strong> characters long.</p>
+  <p id="mdDiff">Need to reduce by <strong>this much</strong>.</p>
+  <p>Below are bad tags that need changing. They need to be less than 30 characters.</p>
+  <p id="tags">Here are bad tags.</p>
+</body>
+
+</html>

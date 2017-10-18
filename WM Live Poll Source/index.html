@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html class="nojs html css_verticalspacer" lang="en-US">
+ <head>
+
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+  <meta name="generator" content="2017.0.2.363"/>
+  
+  <script type="text/javascript">
+   // Update the 'nojs'/'js' class on the html node
+document.documentElement.className = document.documentElement.className.replace(/\bnojs\b/g, 'js');
+
+// Check that all required assets are uploaded and up-to-date
+if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required":["museutils.js", "museconfig.js", "jquery.watch.js", "require.js", "index.css"], "outOfDate":[]};
+</script>
+  
+  <title>Home</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/site_global.css?crc=443350757"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?crc=58457303" id="pagesheet"/>
+  <!-- JS includes -->
+  <script src="https://use.typekit.net/ik/mom4BXvEk8R12TI0cHBMVCYIGGREA2Nk5bvDwAkv97GfeGMgfJ_XnbIPH2JtF2qk5QsLZc4yw2IkZemq5e9kwQquFRZqFeba5AwXFAIt5QMXFDJ-OfG0de8hZWFGdaS0jhNlOeUTicmD-eNaOcFzdPUaiaS0de8hZWFGdaS0jhNlJ6yKScNX-emkSkGHfHOLMsMMeMb6MqGIQWmDZZMgz4WwDM9.js" type="text/javascript"></script>
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   try {Typekit.load();} catch(e) {}
+</script>
+<script>
+			var access_token;
+			var displayCount1;
+			var displayCount2;
+			var displayCount3;
+			var displayCount4;
+			var displayCount5;
+			var displayCount6;
+			var displayCount7;
+			var displayCount8;
+			var displayCount9;
+			var displayCount10;
+
+			var comments;
+			var replies;
+			var first_url;
+			var autoCount;
+			var first_comment_url
+			var specialcount1 = 0;
+			var specialcount2 = 0;
+			var specialcount3 = 0;
+			var specialcount4 = 0;
+			var specialcount5 = 0;
+			var specialcount6 = 0;
+			var specialcount7 = 0;
+			var specialcount8 = 0;
+			var specialcount9 = 0;
+			var specialcount10 = 0;
+			var PAGE_ID = 58975061171; //prompt("What page to track? Type ID.")
+ 			var POST_ID;//prompt("What post to track? Type ID.");
+	        window.fbAsyncInit = function () {
+	        	FB.init({
+	          		appId: '1877327715922664',
+	          		status: true,
+	          		cookie: true,
+	          		xfbml: true
+	      		});
+	    	};
+
+	    		(function (doc) {
+	      		var js;
+	      		var id = 'facebook-jssdk';
+	      		var ref = doc.getElementsByTagName('script')[0];
+	      		if (doc.getElementById(id)) {
+	        		return;
+	      		}
+	      		js = doc.createElement('script');
+	      		js.id = id;
+	      		js.async = true;
+	      		js.src = "https://connect.facebook.net/en_US/all.js";
+	      		ref.parentNode.insertBefore(js, ref);
+	    	}(document));
+	    	function Login() {
+	      		FB.login(function (response) {
+	        	if (response.authResponse) {
+	          		console.log('Logged in.');
+	      			loggedIn = true;
+	      			access_token = response.authResponse.accessToken;
+	      			console.log(access_token)
+	        	}
+	        	else {
+	      			alert("Login attempt failed!");
+	         	}
+	      	}, 
+	      	{ scope: 'email,user_photos,publish_actions' });
+
+	    	}
+
+		    function Logout() {
+		        FB.logout(function () { document.location.reload(); });
+		        console.log("Logged out.")
+		    }
+		    function setKeyword1(){
+		    	var x = document.getElementById("keywordInput1").value;
+		    	keyword1 = x.toLowerCase();
+		    	console.log("Set Keyword 1 to: " + keyword1)
+		    	document.getElementById("keywordOutput1").innerHTML = keyword1;
+		    }
+		    function setKeyword2(){
+		    	var x = document.getElementById("keywordInput2").value;
+		    	keyword2 = x.toLowerCase();
+		    	console.log("Set Keyword 2 to: " + keyword2)
+		    	document.getElementById("keywordOutput2").innerHTML = keyword2;
+		    }
+		    function setKeyword3(){
+		    	var x = document.getElementById("keywordInput3").value;
+		    	keyword3 = x.toLowerCase();
+		    	console.log("Set Keyword 3 to: " + keyword3)
+		    	document.getElementById("keywordOutput3").innerHTML = keyword3;
+		    }
+		    function setKeyword4(){
+		    	var x = document.getElementById("keywordInput4").value;
+		    	keyword4 = x.toLowerCase();
+		    	console.log("Set Keyword 4 to: " + keyword4)
+		    	document.getElementById("keywordOutput4").innerHTML = keyword4;
+		    }
+		    function setKeyword5(){
+		    	var x = document.getElementById("keywordInput5").value;
+		    	keyword5 = x.toLowerCase();
+		    	console.log("Set Keyword 5 to: " + keyword5)
+		    	document.getElementById("keywordOutput5").innerHTML = keyword5;
+		    }
+		    function setKeyword6(){
+		    	var x = document.getElementById("keywordInput6").value;
+		    	keyword6 = x.toLowerCase();
+		    	console.log("Set Keyword 6 to: " + keyword6)
+		    	document.getElementById("keywordOutput6").innerHTML = keyword6;
+		    }
+		    function setKeyword7(){
+		    	var x = document.getElementById("keywordInput7").value;
+		    	keyword7 = x.toLowerCase();
+		    	console.log("Set Keyword 7 to: " + keyword7)
+		    	document.getElementById("keywordOutput7").innerHTML = keyword7;
+		    }
+		    function setKeyword8(){
+		    	var x = document.getElementById("keywordInput8").value;
+		    	keyword8 = x.toLowerCase();
+		    	console.log("Set Keyword 8 to: " + keyword8)
+		    	document.getElementById("keywordOutput8").innerHTML = keyword8;
+		    }
+		    function setKeyword9(){
+		    	var x = document.getElementById("keywordInput9").value;
+		    	keyword9 = x.toLowerCase();
+		    	console.log("Set Keyword 9 to: " + keyword9)
+		    	document.getElementById("keywordOutput9").innerHTML = keyword9;
+		    }
+		    function setKeyword10(){
+		    	var x = document.getElementById("keywordInput10").value;
+		    	keyword10 = x.toLowerCase();
+		    	console.log("Set Keyword 10 to: " + keyword10)
+		    	document.getElementById("keywordOutput10").innerHTML = keyword10;
+		    }
+
+
+		    function setPageID(pageID){
+		      if (pageID == "watchMojo"){
+		        PAGE_ID = 58975061171;
+		      }
+		      if (pageID == "mojoAnime"){
+		        PAGE_ID = 794563754040184;
+		      }
+		      if (pageID == "msMojo"){
+		        PAGE_ID = 1682237778722435;
+		      }
+		      if (pageID == "wmFrancais"){
+		        PAGE_ID = 795427163897101;
+		      }
+		      if (pageID == "wmEspanol"){
+		        PAGE_ID = 122209944801316;
+		      }
+		      if (pageID == "test"){
+		      	PAGE_ID = 402832566722053;
+		      }
+		      console.log("Set PageID to: "+ PAGE_ID);
+
+    		}
+
+    		function resetComments(){
+    			comments = '';
+    		}
+
+    		function setPostID(){
+    			var x = document.getElementById("postID").value;
+     			if (x == "test"){
+      				POST_ID = PAGE_ID + "_" + "482859822052660";
+      				console.log("Debug mode.")
+      				first_url="https://graph.facebook.com/v2.9/"+POST_ID+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+      				console.log(first_url)
+
+      			}
+      			else{
+     				POST_ID = PAGE_ID+"_" + x.toString();
+      				console.log("Set PostID to: "+ POST_ID);
+      				first_url = "https://graph.facebook.com/v2.9/"+POST_ID+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+      				console.log(first_url)
+
+      			}
+    		}
+    		function setCommentURL(id){
+    			first_comment_url = "https://graph.facebook.com/v2.9/"+id+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+
+    		}
+
+
+
+  	</script>
+
+   </head>
+ <body>
+<script>	
+
+		function getCommentThread(URL){
+			FB.api(URL,'GET',
+				function(response) {
+					comments = comments + "<br> THESE ARE REPLIES:"
+					for (var i = 0; i< response.data.length; i++){
+						comments = comments + "<br>" + response.data[i].message;
+						console.log(response.data[i].message);
+						document.getElementById("comments").innerHTML = comments;
+						if (response.data[i].message.toLowerCase().includes(keyword1)){
+							specialcount1++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword2)){
+							specialcount2++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword3)){
+							specialcount3++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword4)){
+							specialcount4++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword5)){
+							specialcount5++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword6)){
+							specialcount6++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword7)){
+							specialcount7++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword8)){
+							specialcount8++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword9)){
+							specialcount9++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword10)){
+							specialcount10++;
+						}
+
+
+					}
+					if (response.paging.next != undefined){
+						//console.log(": "+specialcount);
+						new_url = response.paging.next;
+						getCommentThread(new_url);
+					}
+					else{
+						//console.log("Thread done. Counter is at " +specialcount);
+					}
+				}
+				)
+		}	
+
+
+		function specialCounter(URL){
+			FB.api(URL,'GET', function(response){
+				document.getElementById("status").innerHTML = "Counting.";	
+				console.log("NEW PAGE")
+				console.log(response)
+				for (var bah = 0; bah < response.data.length; bah++){
+					comments = comments + "<br>" + response.data[bah].message;
+					console.log(response.data[bah].message);
+					document.getElementById("comments").innerHTML = comments;
+					if (response.data[bah].message.toLowerCase().includes(keyword1)){
+						specialcount1++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword2)){
+						specialcount2++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword3)){
+						specialcount3++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword4)){
+						specialcount4++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword5)){
+						specialcount5++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword6)){
+						specialcount6++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword7)){
+						specialcount7++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword8)){
+						specialcount8++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword9)){
+						specialcount9++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword10)){
+						specialcount10++;
+					}
+					setCommentURL(response.data[bah].id)
+					getCommentThread(first_comment_url)					
+				}
+			//	console.log(response.paging.next);
+				if(response.paging.next != undefined){
+					console.log(": "+specialcount1);
+					console.log(": "+specialcount2);
+					console.log(": "+specialcount3);
+					console.log(": "+specialcount4);
+					console.log(": "+specialcount5);
+					console.log(": "+specialcount6);	
+					console.log(": "+specialcount7);
+					console.log(": "+specialcount8);
+					console.log(": "+specialcount9);
+					console.log(": "+specialcount10);
+					new_url = response.paging.next;
+				//	console.log("I shouldn't be printing this if it's the last page, but I do anyway.")
+					specialCounter(new_url);
+				}
+				else{
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount1);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount2);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount3);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount4);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount5);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount6);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount7);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount8);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount9);	
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount10);		
+					console.log("ALL DONE!")
+					document.getElementById("status").innerHTML = "All done!";
+					document.getElementById("counter1").innerHTML = specialcount1
+					document.getElementById("counter2").innerHTML = specialcount2
+					document.getElementById("counter3").innerHTML = specialcount3
+					document.getElementById("counter4").innerHTML = specialcount4
+					document.getElementById("counter5").innerHTML = specialcount5
+					document.getElementById("counter6").innerHTML = specialcount6
+					document.getElementById("counter7").innerHTML = specialcount7
+					document.getElementById("counter8").innerHTML = specialcount8
+					document.getElementById("counter9").innerHTML = specialcount9
+					document.getElementById("counter10").innerHTML = specialcount10
+
+				}
+
+				
+			});
+		}
+
+
+		function resetCounter(){
+			specialcount1=0;
+			specialcount2=0
+			specialcount3=0
+			specialcount4=0
+			specialcount5=0
+			specialcount6=0
+			specialcount7=0
+			specialcount8=0
+			specialcount9=0
+			specialcount10=0
+
+		}
+
+
+		function doTheThing(){
+			specialCounter(first_url);
+
+			var displayCount1 = specialcount1;
+			var displayCount2 = specialcount2;
+			var displayCount3 = specialcount3;
+			var displayCount4 = specialcount4;
+			var displayCount5 = specialcount5;
+			var displayCount6 = specialcount6;
+			var displayCount7 = specialcount7;
+			var displayCount8 = specialcount8;
+			var displayCount9 = specialcount9;
+			var displayCount10 = specialcount10;
+
+
+			document.getElementById("counter1").innerHTML = displayCount1;
+			document.getElementById("counter2").innerHTML = displayCount2;
+			document.getElementById("counter3").innerHTML = displayCount3;
+			document.getElementById("counter4").innerHTML = displayCount4;
+			document.getElementById("counter5").innerHTML = displayCount5;
+			document.getElementById("counter6").innerHTML = displayCount6;
+			document.getElementById("counter7").innerHTML = displayCount7;
+			document.getElementById("counter8").innerHTML = displayCount8;
+			document.getElementById("counter9").innerHTML = displayCount9;
+			document.getElementById("counter10").innerHTML = displayCount10;
+			resetCounter();
+			resetComments();
+			
+		}
+
+		function autoCount(){
+			auto_count = setInterval(function(){
+				doTheThing();
+			},3000);
+			}	
+
+		function stopCount(){
+			clearInterval(auto_count);
+
+		}
+		</script>
+  <div class="clearfix" id="page"><!-- group -->
+   <div class="clip_frame grpelem" id="u175"><!-- image -->
+    <img class="block" id="u175_img" src="images/liveshow.jpg?crc=119826876" alt="" width="1980" height="1080"/>
+   </div>
+   <div class="clearfix grpelem" id="u110-4"><!-- content -->
+    <p id="counter1">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u185-4"><!-- content -->
+    <p id="counter2">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u188-4"><!-- content -->
+    <p id="counter3">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u191-4"><!-- content -->
+    <p id="counter4">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u194-4"><!-- content -->
+    <p id="counter5">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u197-4"><!-- content -->
+    <p id="counter6">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u200-4"><!-- content -->
+    <p id="counter7">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u203-4"><!-- content -->
+    <p id="counter8">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u206-4"><!-- content -->
+    <p id="counter9">10000</p>
+   </div>
+   <div class="clearfix grpelem" id="u209-4"><!-- content -->
+    <p id="counter10">10000</p>
+   </div>
+   <div class="verticalspacer" data-offset-top="1142" data-content-above-spacer="1142" data-content-below-spacer="62"></div>
+    <p><strong id="status">Idle right now.</strong></p>	
+		<p><button onclick="setKeyword1()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput1" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword2()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput2" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword3()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput3" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword4()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput4" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword5()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput5" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword6()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput6" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword7()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput7" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword8()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput8" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword9()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput9" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword10()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput10" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	
+
+
+    	<p><button onclick="doTheThing()"><strong>Count keyword</strong></button></p>
+    	<p><button onclick="Login()"><strong>Login to FB</strong></button></p>
+    	<p><strong>Set page ID: </strong><select onchange="setPageID(this.value)">
+    		<option value="watchMojo">WatchMojo</option>
+    		<option value="mojoAnime">MojoAnime</option>
+    		<option value="msMojo">MsMojo</option>
+    		<option value="wmFrancais">WatchMojo Français</option>
+    		<option value="wmEspanol">WatchMojo Espanol</option>
+    		<option value="test">Debug</option>
+  		</select></p>
+  		<p><button onclick="setPostID()"><strong>Set post ID: </strong></button>
+  			<input type="text" id="postID" placeholder="Enter post ID here." style="border: 1px solid black;">
+  		</p>
+  		<p><button onclick="autoCount()"><strong>Count automatically</strong></button>
+  			<button onclick="stopCount()"><strong>Stop counting</strong></button></p>
+  		<p id="comments">Here are all the commments.</p>
+  </div>
+  <!-- Other scripts -->
+  <script type="text/javascript">
+   window.Muse.assets.check=function(d){if(!window.Muse.assets.checked){window.Muse.assets.checked=!0;var b={},c=function(a,b){if(window.getComputedStyle){var c=window.getComputedStyle(a,null);return c&&c.getPropertyValue(b)||c&&c[b]||""}if(document.documentElement.currentStyle)return(c=a.currentStyle)&&c[b]||a.style&&a.style[b]||"";return""},a=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),
+16);return 0},g=function(g){for(var f=document.getElementsByTagName("link"),h=0;h<f.length;h++)if("text/css"==f[h].type){var i=(f[h].href||"").match(/\/?css\/([\w\-]+\.css)\?crc=(\d+)/);if(!i||!i[1]||!i[2])break;b[i[1]]=i[2]}f=document.createElement("div");f.className="version";f.style.cssText="display:none; width:1px; height:1px;";document.getElementsByTagName("body")[0].appendChild(f);for(h=0;h<Muse.assets.required.length;){var i=Muse.assets.required[h],l=i.match(/([\w\-\.]+)\.(\w+)$/),k=l&&l[1]?
+l[1]:null,l=l&&l[2]?l[2]:null;switch(l.toLowerCase()){case "css":k=k.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");f.className+=" "+k;k=a(c(f,"color"));l=a(c(f,"backgroundColor"));k!=0||l!=0?(Muse.assets.required.splice(h,1),"undefined"!=typeof b[i]&&(k!=b[i]>>>24||l!=(b[i]&16777215))&&Muse.assets.outOfDate.push(i)):h++;f.className="version";break;case "js":h++;break;default:throw Error("Unsupported file type: "+l);}}d?d().jquery!="1.8.3"&&Muse.assets.outOfDate.push("jquery-1.8.3.min.js"):Muse.assets.required.push("jquery-1.8.3.min.js");
+f.parentNode.removeChild(f);if(Muse.assets.outOfDate.length||Muse.assets.required.length)f="Some files on the server may be missing or incorrect. Clear browser cache and try again. If the problem persists please contact website author.",g&&Muse.assets.outOfDate.length&&(f+="\nOut of date: "+Muse.assets.outOfDate.join(",")),g&&Muse.assets.required.length&&(f+="\nMissing: "+Muse.assets.required.join(",")),alert(f)};location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi)?setTimeout(function(){g(!0)},5E3):g()}};
+var muse_init=function(){require.config({baseUrl:""});require(["jquery","museutils","whatinput","jquery.watch"],function(d){var $ = d;$(document).ready(function(){try{
+window.Muse.assets.check($);/* body */
+Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
+Muse.Utils.prepHyperlinks(true);/* body */
+Muse.Utils.fullPage('#page');/* 100% height page */
+Muse.Utils.showWidgetsWhenReady();/* body */
+Muse.Utils.transformMarkupToFixBrowserProblems();/* body */
+}catch(b){if(b&&"function"==typeof b.notify?b.notify():Muse.Assert.fail("Error calling selector function: "+b),false)throw b;}})})};
+
+</script>
+  <!-- RequireJS script -->
+  <script src="scripts/require.js?crc=4234670167" type="text/javascript" async data-main="scripts/museconfig.js?crc=4152223963" onload="if (requirejs) requirejs.onError = function(requireType, requireModule) { if (requireType && requireType.toString && requireType.toString().indexOf && 0 <= requireType.toString().indexOf('#scripterror')) window.Muse.assets.check(); }" onerror="window.Muse.assets.check();"></script>
+
+   </body>
+</html>

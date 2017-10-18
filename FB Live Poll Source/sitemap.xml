@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://WATCHMOJOLIVEPOLL.com/index.html</loc>
+    <lastmod>2017-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>http://WATCHMOJOLIVEPOLL.com/images/applesvsoranges.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://WATCHMOJOLIVEPOLL.com/images/pasted%20image%20552x143-crop-u242.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://WATCHMOJOLIVEPOLL.com/images/pasted%20image%20552x143-crop-u235.png</image:loc>
+    </image:image>
+  </url>
+</urlset>

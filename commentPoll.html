@@ -1,0 +1,444 @@
+<!--I'm aware this code doesn't necessarily follow the latest conventions -->
+
+<html>
+	<head>
+		<title>Comment Counter</title>
+		<!-- Facebook API -->
+
+		
+<script>
+			var access_token;
+			var displayCount1;
+			var displayCount2;
+			var displayCount3;
+			var displayCount4;
+			var displayCount5;
+			var displayCount6;
+			var displayCount7;
+			var displayCount8;
+			var displayCount9;
+			var displayCount10;
+
+			var comments;
+			var replies;
+			var first_url;
+			var autoCount;
+			var first_comment_url
+			var specialcount1 = 0;
+			var specialcount2 = 0;
+			var specialcount3 = 0;
+			var specialcount4 = 0;
+			var specialcount5 = 0;
+			var specialcount6 = 0;
+			var specialcount7 = 0;
+			var specialcount8 = 0;
+			var specialcount9 = 0;
+			var specialcount10 = 0;
+			var PAGE_ID = 'YOUR-PAGE-iD'; //prompt("What page to track? Type ID.")
+ 			var POST_ID;                  //prompt("What post to track? Type ID.");
+	        window.fbAsyncInit = function () {
+	        	FB.init({
+	          		appId: 'YOUR-APP-ID',
+	          		status: true,
+	          		cookie: true,
+	          		xfbml: true
+	      		});
+	    	};
+
+	    		(function (doc) {
+	      		var js;
+	      		var id = 'facebook-jssdk';
+	      		var ref = doc.getElementsByTagName('script')[0];
+	      		if (doc.getElementById(id)) {
+	        		return;
+	      		}
+	      		js = doc.createElement('script');
+	      		js.id = id;
+	      		js.async = true;
+	      		js.src = "https://connect.facebook.net/en_US/all.js";
+	      		ref.parentNode.insertBefore(js, ref);
+	    	}(document));
+	    	function Login() {
+	      		FB.login(function (response) {
+	        	if (response.authResponse) {
+	          		console.log('Logged in.');
+	      			loggedIn = true;
+	      			access_token = response.authResponse.accessToken;
+	      			console.log(access_token)
+	        	}
+	        	else {
+	      			alert("Login attempt failed!");
+	         	}
+	      	}, 
+	      	{ scope: 'email,user_photos,publish_actions' });
+
+	    	}
+
+		    function Logout() {
+		        FB.logout(function () { document.location.reload(); });
+		        console.log("Logged out.")
+		    }
+		    function setKeyword1(){
+		    	var x = document.getElementById("keywordInput1").value;
+		    	keyword1 = x.toLowerCase();
+		    	console.log("Set Keyword 1 to: " + keyword1)
+		    	document.getElementById("keywordOutput1").innerHTML = keyword1;
+		    }
+		    function setKeyword2(){
+		    	var x = document.getElementById("keywordInput2").value;
+		    	keyword2 = x.toLowerCase();
+		    	console.log("Set Keyword 2 to: " + keyword2)
+		    	document.getElementById("keywordOutput2").innerHTML = keyword2;
+		    }
+		    function setKeyword3(){
+		    	var x = document.getElementById("keywordInput3").value;
+		    	keyword3 = x.toLowerCase();
+		    	console.log("Set Keyword 3 to: " + keyword3)
+		    	document.getElementById("keywordOutput3").innerHTML = keyword3;
+		    }
+		    function setKeyword4(){
+		    	var x = document.getElementById("keywordInput4").value;
+		    	keyword4 = x.toLowerCase();
+		    	console.log("Set Keyword 4 to: " + keyword4)
+		    	document.getElementById("keywordOutput4").innerHTML = keyword4;
+		    }
+		    function setKeyword5(){
+		    	var x = document.getElementById("keywordInput5").value;
+		    	keyword5 = x.toLowerCase();
+		    	console.log("Set Keyword 5 to: " + keyword5)
+		    	document.getElementById("keywordOutput5").innerHTML = keyword5;
+		    }
+		    function setKeyword6(){
+		    	var x = document.getElementById("keywordInput6").value;
+		    	keyword6 = x.toLowerCase();
+		    	console.log("Set Keyword 6 to: " + keyword6)
+		    	document.getElementById("keywordOutput6").innerHTML = keyword6;
+		    }
+		    function setKeyword7(){
+		    	var x = document.getElementById("keywordInput7").value;
+		    	keyword7 = x.toLowerCase();
+		    	console.log("Set Keyword 7 to: " + keyword7)
+		    	document.getElementById("keywordOutput7").innerHTML = keyword7;
+		    }
+		    function setKeyword8(){
+		    	var x = document.getElementById("keywordInput8").value;
+		    	keyword8 = x.toLowerCase();
+		    	console.log("Set Keyword 8 to: " + keyword8)
+		    	document.getElementById("keywordOutput8").innerHTML = keyword8;
+		    }
+		    function setKeyword9(){
+		    	var x = document.getElementById("keywordInput9").value;
+		    	keyword9 = x.toLowerCase();
+		    	console.log("Set Keyword 9 to: " + keyword9)
+		    	document.getElementById("keywordOutput9").innerHTML = keyword9;
+		    }
+		    function setKeyword10(){
+		    	var x = document.getElementById("keywordInput10").value;
+		    	keyword10 = x.toLowerCase();
+		    	console.log("Set Keyword 10 to: " + keyword10)
+		    	document.getElementById("keywordOutput10").innerHTML = keyword10;
+		    }
+
+
+		    function setPageID(pageID){
+		      if (pageID == "test"){
+		      	PAGE_ID = "YOUR-TEST-PAGE-ID";
+		      }
+		      else {
+		      	PAGE_ID = pageID;
+		      }
+		      console.log("Set PageID to: "+ PAGE_ID);
+
+    		}
+
+    		function resetComments(){
+    			comments = '';
+    		}
+
+    		function setPostID(){
+    			var x = document.getElementById("postID").value;
+     			if (x == "test"){
+      				POST_ID = PAGE_ID + "_" + "YOUR-TEST-PAGE-ID";
+      				console.log("Debug mode.")
+      				first_url="https://graph.facebook.com/v2.9/"+POST_ID+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+      				console.log(first_url)
+
+      			}
+      			else{
+     				POST_ID = PAGE_ID+"_" + x.toString();
+      				console.log("Set PostID to: "+ POST_ID);
+      				first_url = "https://graph.facebook.com/v2.9/"+POST_ID+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+      				console.log(first_url)
+
+      			}
+    		}
+    		function setCommentURL(id){
+    			first_comment_url = "https://graph.facebook.com/v2.9/"+id+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
+
+    		}
+
+
+
+  	</script>
+	</head>
+	<body>
+		<script>	
+
+		function getCommentThread(URL){
+			FB.api(URL,'GET',
+				function(response) {
+					comments = comments + "<br> THESE ARE REPLIES:"
+					for (var i = 0; i< response.data.length; i++){
+						comments = comments + "<br>" + response.data[i].message;
+						console.log(response.data[i].message);
+						document.getElementById("comments").innerHTML = comments;
+						if (response.data[i].message.toLowerCase().includes(keyword1)){
+							specialcount1++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword2)){
+							specialcount2++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword3)){
+							specialcount3++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword4)){
+							specialcount4++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword5)){
+							specialcount5++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword6)){
+							specialcount6++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword7)){
+							specialcount7++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword8)){
+							specialcount8++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword9)){
+							specialcount9++;
+						}
+						if (response.data[i].message.toLowerCase().includes(keyword10)){
+							specialcount10++;
+						}
+
+
+					}
+					if (response.paging.next != undefined){
+						//console.log(": "+specialcount);
+						new_url = response.paging.next;
+						getCommentThread(new_url);
+					}
+					else{
+						//console.log("Thread done. Counter is at " +specialcount);
+					}
+				}
+				)
+		}	
+
+
+		function specialCounter(URL){
+			FB.api(URL,'GET', function(response){
+				document.getElementById("status").innerHTML = "Counting.";	
+				console.log("NEW PAGE")
+				console.log(response)
+				for (var bah = 0; bah < response.data.length; bah++){
+					comments = comments + "<br>" + response.data[bah].message;
+					console.log(response.data[bah].message);
+					document.getElementById("comments").innerHTML = comments;
+					if (response.data[bah].message.toLowerCase().includes(keyword1)){
+						specialcount1++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword2)){
+						specialcount2++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword3)){
+						specialcount3++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword4)){
+						specialcount4++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword5)){
+						specialcount5++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword6)){
+						specialcount6++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword7)){
+						specialcount7++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword8)){
+						specialcount8++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword9)){
+						specialcount9++;
+					}
+					if (response.data[bah].message.toLowerCase().includes(keyword10)){
+						specialcount10++;
+					}
+					setCommentURL(response.data[bah].id)
+					getCommentThread(first_comment_url)					
+				}
+			//	console.log(response.paging.next);
+				if(response.paging.next != undefined){
+					console.log(": "+specialcount1);
+					console.log(": "+specialcount2);
+					console.log(": "+specialcount3);
+					console.log(": "+specialcount4);
+					console.log(": "+specialcount5);
+					console.log(": "+specialcount6);	
+					console.log(": "+specialcount7);
+					console.log(": "+specialcount8);
+					console.log(": "+specialcount9);
+					console.log(": "+specialcount10);
+					new_url = response.paging.next;
+				//	console.log("I shouldn't be printing this if it's the last page, but I do anyway.")
+					specialCounter(new_url);
+				}
+				else{
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount1);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount2);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount3);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount4);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount5);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount6);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount7);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount8);
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount9);	
+					console.log("PAGE DONE. COUNTER IS AT "+specialcount10);		
+					console.log("ALL DONE!")
+					document.getElementById("status").innerHTML = "All done!";
+					document.getElementById("counter1").innerHTML = specialcount1
+					document.getElementById("counter2").innerHTML = specialcount2
+					document.getElementById("counter3").innerHTML = specialcount3
+					document.getElementById("counter4").innerHTML = specialcount4
+					document.getElementById("counter5").innerHTML = specialcount5
+					document.getElementById("counter6").innerHTML = specialcount6
+					document.getElementById("counter7").innerHTML = specialcount7
+					document.getElementById("counter8").innerHTML = specialcount8
+					document.getElementById("counter9").innerHTML = specialcount9
+					document.getElementById("counter10").innerHTML = specialcount10
+
+				}
+
+				
+			});
+		}
+
+
+		function resetCounter(){
+			specialcount1=0;
+			specialcount2=0
+			specialcount3=0
+			specialcount4=0
+			specialcount5=0
+			specialcount6=0
+			specialcount7=0
+			specialcount8=0
+			specialcount9=0
+			specialcount10=0
+
+		}
+
+
+		function doTheThing(){
+			specialCounter(first_url);
+
+			var displayCount1 = specialcount1;
+			var displayCount2 = specialcount2;
+			var displayCount3 = specialcount3;
+			var displayCount4 = specialcount4;
+			var displayCount5 = specialcount5;
+			var displayCount6 = specialcount6;
+			var displayCount7 = specialcount7;
+			var displayCount8 = specialcount8;
+			var displayCount9 = specialcount9;
+			var displayCount10 = specialcount10;
+
+
+			document.getElementById("counter1").innerHTML = displayCount1;
+			document.getElementById("counter2").innerHTML = displayCount2;
+			document.getElementById("counter3").innerHTML = displayCount3;
+			document.getElementById("counter4").innerHTML = displayCount4;
+			document.getElementById("counter5").innerHTML = displayCount5;
+			document.getElementById("counter6").innerHTML = displayCount6;
+			document.getElementById("counter7").innerHTML = displayCount7;
+			document.getElementById("counter8").innerHTML = displayCount8;
+			document.getElementById("counter9").innerHTML = displayCount9;
+			document.getElementById("counter10").innerHTML = displayCount10;
+			resetCounter();
+			resetComments();
+			
+		}
+
+		function autoCount(){
+			auto_count = setInterval(function(){
+				doTheThing();
+			},3000);
+			}	
+
+		function stopCount(){
+			clearInterval(auto_count);
+
+		}
+		</script>
+		<!--LEGIBLE TO HUMANS AFTER THIS POINT-->	
+		<p>We are currently counting how many times people mentioned the following keywords</p> 
+		<ul>
+			<li><strong id='keywordOutput1'>KEYWORD1</strong>
+			<li><strong id='keywordOutput2'>KEYWORD2</strong>
+			<li><strong id='keywordOutput3'>KEYWORD3</strong>
+			<li><strong id='keywordOutput4'>KEYWORD4</strong>
+			<li><strong id='keywordOutput5'>KEYWORD5</strong>
+			<li><strong id='keywordOutput6'>KEYWORD6</strong>
+			<li><strong id='keywordOutput7'>KEYWORD7</strong>
+			<li><strong id='keywordOutput8'>KEYWORD8</strong>
+		</ul>	
+		<p>Keyword1: <strong id='counter1'>Count this</strong></p>
+		<p>Keyword2: <strong id='counter2'>Count this</strong></p>
+		<p>Keyword3: <strong id='counter3'>Count this</strong></p>
+		<p>Keyword4: <strong id='counter4'>Count this</strong></p>
+		<p>Keyword5: <strong id='counter5'>Count this</strong></p>
+		<p>Keyword6: <strong id='counter6'>Count this</strong></p>
+		<p>Keyword7: <strong id='counter7'>Count this</strong></p>
+		<p>Keyword8: <strong id='counter8'>Count this</strong></p>
+		
+
+		<p><strong id="status">Idle right now.</strong></p>	
+		<p><button onclick="setKeyword1()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput1" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword2()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput2" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword3()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput3" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword4()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput4" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword5()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput5" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword6()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput6" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword7()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput7" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	<p><button onclick="setKeyword8()"><strong>Set Keyword: </strong></button>
+    	<input type="text" id="keywordInput8" placeholder="Enter keyword here." style="border: 1px solid black;"></p>
+    	
+
+
+    	<p><button onclick="doTheThing()"><strong>Count keyword</strong></button></p>
+    	<p><button onclick="Login()"><strong>Login to FB</strong></button></p>
+    	<p><button onclick="setPageID()"><strong>Set post ID: </strong></button>
+  			<input type="text" id="pageID" placeholder="Enter page ID here." style="border: 1px solid black;">
+  		</p>
+  		<p><button onclick="setPostID()"><strong>Set post ID: </strong></button>
+  			<input type="text" id="postID" placeholder="Enter post ID here." style="border: 1px solid black;">
+  		</p>
+  		<p><button onclick="autoCount()"><strong>Count automatically</strong></button>
+  			<button onclick="stopCount()"><strong>Stop counting</strong></button></p>
+  		<p id="comments">Here are all the commments.</p>
+	</body>
+
+
+
+</html>
+

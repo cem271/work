@@ -1,5 +1,7 @@
 <!--I'm aware this code doesn't necessarily follow the latest conventions -->
 
+
+
 <html>
 	<head>
 		<title>Comment Counter</title>
@@ -7,6 +9,12 @@
 
 		
 <script>
+	// The JavaScript on this page follows the comment threads on a given
+	// Facebook post and keeps count of up to 10 keywords.
+	// This information can then be displayed on the screen for a livepoll.
+	// A livepoll is easily conducted by broadcasting the browser screen
+	// via any broadcasting software. OBS is by far the best.
+
 			var access_token;
 			var displayCount1;
 			var displayCount2;
@@ -34,11 +42,13 @@
 			var specialcount8 = 0;
 			var specialcount9 = 0;
 			var specialcount10 = 0;
-			var PAGE_ID = 'YOUR-PAGE-iD'; //prompt("What page to track? Type ID.")
+			var PAGE_ID = 'YOUR-PAGE-ID'; //prompt("What page to track? Type ID.")
  			var POST_ID;                  //prompt("What post to track? Type ID.");
+	        
+ 			// Initializing Facebook API.
 	        window.fbAsyncInit = function () {
 	        	FB.init({
-	          		appId: 'YOUR-APP-ID',
+	          		appId: YOUR-APP-ID-HERE,
 	          		status: true,
 	          		cookie: true,
 	          		xfbml: true
@@ -58,6 +68,7 @@
 	      		js.src = "https://connect.facebook.net/en_US/all.js";
 	      		ref.parentNode.insertBefore(js, ref);
 	    	}(document));
+	    	// For logging into Facebook.	
 	    	function Login() {
 	      		FB.login(function (response) {
 	        	if (response.authResponse) {
@@ -73,11 +84,13 @@
 	      	{ scope: 'email,user_photos,publish_actions' });
 
 	    	}
-
+	    	// For logging out of Facebook.
 		    function Logout() {
 		        FB.logout(function () { document.location.reload(); });
 		        console.log("Logged out.")
 		    }
+
+		    // Set the keywords.
 		    function setKeyword1(){
 		    	var x = document.getElementById("keywordInput1").value;
 		    	keyword1 = x.toLowerCase();
@@ -139,7 +152,8 @@
 		    	document.getElementById("keywordOutput10").innerHTML = keyword10;
 		    }
 
-
+		    // Sets the Page ID. This is the numerical representation of your Facebook page.
+		    // This information can be found on the page's URL or it's About section.
 		    function setPageID(pageID){
 		      if (pageID == "test"){
 		      	PAGE_ID = "YOUR-TEST-PAGE-ID";
@@ -150,11 +164,13 @@
 		      console.log("Set PageID to: "+ PAGE_ID);
 
     		}
-
+    		// Resets the comment list so that it doesn't have double entries.
     		function resetComments(){
     			comments = '';
     		}
 
+    		// Sets the Post ID. This is a numerical representation of your Facebook post.
+    		// This information can only be found on the unique URL of the post.
     		function setPostID(){
     			var x = document.getElementById("postID").value;
      			if (x == "test"){
@@ -172,6 +188,9 @@
 
       			}
     		}
+    		// The code works recursively. Everytime we come to the end of a page, we need to get a new URL,
+    		// and then run the same function again, until we run out of URLs. As such, we have to set a
+    		// First URL. 
     		function setCommentURL(id){
     			first_comment_url = "https://graph.facebook.com/v2.9/"+id+"/comments?fields=message&limit=25&pretty=1&access_token="+access_token
 
@@ -183,7 +202,8 @@
 	</head>
 	<body>
 		<script>	
-
+        // This is where we start getting the comment thread from the post. There are a bunch of
+        // if statements that help count the instances of keywords.
 		function getCommentThread(URL){
 			FB.api(URL,'GET',
 				function(response) {
@@ -225,6 +245,9 @@
 
 
 					}
+					// Facebook's JSON files are paginated. If there is a next page, we set 
+					// the query URL to the next page's URL. Then we call this function again.
+					// A.k.a. recursion.
 					if (response.paging.next != undefined){
 						//console.log(": "+specialcount);
 						new_url = response.paging.next;
@@ -237,7 +260,7 @@
 				)
 		}	
 
-
+		// This is where the counting happens.
 		function specialCounter(URL){
 			FB.api(URL,'GET', function(response){
 				document.getElementById("status").innerHTML = "Counting.";	
@@ -326,7 +349,7 @@
 			});
 		}
 
-
+		// Resets the counter so that we don't do double counts.
 		function resetCounter(){
 			specialcount1=0;
 			specialcount2=0
@@ -341,7 +364,7 @@
 
 		}
 
-
+		// Function for the main loop.
 		function doTheThing(){
 			specialCounter(first_url);
 
@@ -371,18 +394,19 @@
 			resetComments();
 			
 		}
-
+		// The main loop. Gets a new count every 3 seconds.
 		function autoCount(){
 			auto_count = setInterval(function(){
 				doTheThing();
 			},3000);
 			}	
-
+		// Stops the loop.
 		function stopCount(){
 			clearInterval(auto_count);
 
 		}
 		</script>
+
 		<!--LEGIBLE TO HUMANS AFTER THIS POINT-->	
 		<p>We are currently counting how many times people mentioned the following keywords</p> 
 		<ul>
